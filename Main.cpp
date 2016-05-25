@@ -8,7 +8,7 @@ int main()
 
 	ticToe.BlankOut('-');
 	cout << "This is a tic toe game with markers O and X" << endl;
-	cout << "Two players X and Y can fill the 3*3 table below" << endl;
+	cout << "Two players X and O can fill the 3 by 3 table below" << endl;
 	ticToe.DrawConsole();
 	cout << "The player who succeeds putting 3 successive characters" << endl
 		<< "Horizonatlly, Vertically or Diagonally Wins"<<endl;
