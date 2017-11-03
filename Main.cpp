@@ -7,16 +7,31 @@ int main()
 	Board ticToe;
 
 	ticToe.BlankOut('-');
-	cout << "This is a tic toe game with markers O and X" << endl;
-	cout << "Two players X and O can fill the 3 by 3 table below" << endl;
+	cout << "Welcome to the Tic-Tac-Toe-game" << endl 
+		
+		<< "To play against someone, enter O or against computer, enter C: ";
+	char a;
+	cin >> a;
+	if (a == 'o' || a == '0')//User might see letter O as o, or 0, hence exploring those possibilities
+	{
+		a = 'O';
+	}
+	else if (a == 'c')
+		a = 'C';
+	
+	cout<<endl<<"First to put 3 characters horizontally, vertically or diagonally wins"<<endl;
+	cout << "Tic-tac-toe table looks as such:"<<endl;
 	ticToe.DrawConsole();
-	cout << "The player who succeeds putting 3 successive characters" << endl
-		<< "Horizonatlly, Vertically or Diagonally Wins"<<endl;
-	cout<<"Let the game begin "<< endl << endl;
-	
-	
+	cout << "Rows are numbered from 1 to 3" << endl
+		<< "Columns are numbered from 1 to 3" << endl<<endl;
+	if (a == 'O')
+		cout << "\"Player X vs Player O\"" << endl << endl ;
+	else
+		cout << "\"Player X vs Computer\""<<endl<<endl;
+
 	int move = 0;
 	bool gameOver;
+	
 	do
 	{
 
@@ -31,13 +46,13 @@ int main()
 			continue;
 		}
 		ticToe.DrawConsole();
-		ticToe.Player('O');
-		ticToe.Winner('O');
+		ticToe.Player(a);
+		ticToe.Winner(a);
 		ticToe.DrawConsole();
 		cout << endl;
 
 		move++;
-		gameOver = ticToe.HasWin('O');
+		gameOver = ticToe.HasWin(a);
 
 
 
@@ -48,220 +63,3 @@ int main()
 	}
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
