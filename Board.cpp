@@ -1,5 +1,8 @@
 #include<iostream>
 #include "Board.h"
+#include <ctime>
+#include<cstdlib>
+
 
 using namespace std;
 
@@ -35,9 +38,23 @@ bool Board::OutOfBound()
 
 }
 void  Board::PromptRowInput(char a) {
+	if (a == 'O'||a=='X')
+	{
+		cout << "Player " << a << " enter the row number where you want to put your " << a << " : ";
+		cin >> X;
+	}
+	if (a == 'C')
+	{
+		
+		srand(time(0));
+		X = rand() % 3 + 1;
+		while (HasAlreadyBeenInput()) {
+			X = rand() % 3 + 1;
+		}
+		cout << "Computer plays row: "<< X<<endl;
+	}
 
-	cout << "Player " << a << " write the row where you want to put your " << a << " : ";
-	cin >> X;
+	
 	while (OutOfBound() || cin.fail()) {
 		if (cin.fail())
 		{
@@ -59,9 +76,23 @@ void  Board::PromptRowInput(char a) {
 	}
 }
 void  Board::PromptColumnInput(char a) {
-
-	cout << "Player " << a << " write the column where you want to put your " << a << " : ";
-	cin >> Y;
+	
+	
+	if (a == 'O'||a=='X')
+	{
+		cout << "Player " << a << " enter the column number where you want to put your " << a << " : ";
+		cin >> Y;
+	}
+	if (a == 'C')
+	{
+	
+		srand(time(0));
+		Y = rand() % 3 + 1;
+		while (HasAlreadyBeenInput()) {
+			Y = rand() % 3 + 1;
+		}
+		cout << "Computer plays column: " << Y<<endl;
+	}
 	while (OutOfBound()||cin.fail())
 	{
 		if (cin.fail())
@@ -87,18 +118,18 @@ void  Board::PromptColumnInput(char a) {
 void Board::Player(char a)
 {
 	
-	PromptRowInput(a);
-	PromptColumnInput(a);
-	while (HasAlreadyBeenInput())
-	{
-		DrawConsole();
-	cout << "The case is already occupied. Play again " << endl << endl;
-		
 		PromptRowInput(a);
 		PromptColumnInput(a);
-	}
-	board[X - 1][Y - 1] = a;
-	cout << endl;
+		while (HasAlreadyBeenInput())
+		{
+			cout << "That spot is already occupied. Play again " << endl << endl;
+
+			PromptRowInput(a);
+			PromptColumnInput(a);
+		}
+		board[X - 1][Y - 1] = a;
+		cout << endl;
+	
 }
 bool Board::HasWin(char a)
 {
