@@ -132,16 +132,16 @@ void Board::Player(char a)
 	
 }
 bool Board::HasWin(char a)
-{
-	if (board[0][0] == a && board[0][1] == a &&board[0][2] == a ||
-		board[0][0] == a &&board[1][0] == a &&board[2][0] == a ||
-		board[0][0] == a &&board[1][1] == a &&board[2][2] == a ||
-		board[2][0] == a &&board[1][1] == a &&board[0][2] == a ||
-		board[0][2] == a &&board[1][2] == a && board[2][2] == a ||
-		board[0][1] == a && board[1][1] == a &&board[2][1] == a ||
-		board[1][0] == a && board[1][1] == a &&board[1][2] == a ||
-		board[3][1] == a&&board[3][2] == a&&board[3][3] == a ||
-		board[0][1] == a &&board[1][1] == a&&board[2][1] == a)
+{//Wins if all 3 letters are in the:
+	if (board[0][0] == a && board[0][1] == a &&board[0][2] == a ||//1st row
+		board[1][0] == a && board[1][1] == a &&board[1][2] == a ||//2nd row
+		board[2][0] == a && board[2][1] == a &&board[2][2] == a ||//3rd row
+		board[0][0] == a &&board[1][0] == a &&board[2][0] == a ||//1st column
+		board[0][1] == a && board[1][1] == a &&board[2][1] == a ||//2nd column
+		board[0][2] == a &&board[1][2] == a && board[2][2] == a ||//3rd column
+		board[0][0] == a &&board[1][1] == a &&board[2][2] == a ||//diagonal with negative slope
+		board[2][0] == a &&board[1][1] == a &&board[0][2] == a //diagonal with positive slope
+		)
 		return true;
 	else
 		return false;
